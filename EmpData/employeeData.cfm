@@ -2,10 +2,14 @@
 <cfif !StructKeyExists(session,"email")>
     <cflocation url="/registration_page/sign_up/login.cfm">
 </cfif>
+
+
+
 <!--- ///session --->
 <cfquery datasource="aakanshadb" name="emp_list">
- SELECT * FROM registration
+ SELECT * FROM registration 
 </cfquery>
+
 
 <!--- <cfdump var="#emp_list.COUNTRY#"><cfabort> --->
 
@@ -215,6 +219,7 @@
     </thead>
     <!--- <cfdump var="#emp_list.COUNTRY#"> --->
     <cfoutput>
+     
       <tbody id="User_Search">
         <cfloop query="emp_list">
           <tr>
@@ -230,11 +235,16 @@
             </cfif> 
           </td>
             <!--- -----toggle button --->
+         
             
             <td>
               <div class="ms-4 mt-0">
               <label class="switch">
-                <input type="checkbox" class="toggle_btn" value="#emp_list.ID#">
+                <input type="checkbox" class="toggle_btn" id="toggle_btn" value="<cfoutput>#emp_list.ID#</cfoutput>"
+                <cfif emp_list.User_Admin eq 1>
+                  checked
+                </cfif>>
+
                 <span class="slider round"></span>
               </label>
             </div>
@@ -321,6 +331,9 @@ $("#search_emp").click(function(){
 
 
 //VIEW DETAIL
+
+  
+
   function view_detail(value) {
     // console.log(value);
       $.ajax({
@@ -398,11 +411,12 @@ function delete_detail(val){
 }
 
 // TOGGLE BUTTON
-$(".toggle_btn").change(function(){
+
+$("#toggle_btn").change(function(){
   // console.log(this);
  var user_ID= $(this).val();
   console.log('24456467')
-  if( $('.toggle_btn').is(':checked')==true){
+  if( $('#toggle_btn').is(':checked')==true){
     var user =1;
   }
     else{

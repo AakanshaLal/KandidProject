@@ -12,6 +12,9 @@
 </head>
 <body> 
     <h1>Dashboard</h1>
+    <a href="/EmpData/employeeData.cfm">
+       <button type="button">Main Emp Page</button>
+    </a>
     
     
 </body>

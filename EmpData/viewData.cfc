@@ -49,7 +49,7 @@
     <!--- <cfdump var="#argumemnts.inpSearch#"> --->
     <cfquery name="search" datasource="aakanshadb">
         SELECT * FROM registration
-        WHERE First_name Like "#arguments.inpSearch#%" 
+        WHERE First_name Like <cfqueryparam value="#arguments.inpSearch#%" cfsqltype="cf_sql_integer">
     </cfquery>
     <cfreturn #SerializeJSON(search)#>
 

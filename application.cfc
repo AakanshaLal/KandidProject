@@ -4,7 +4,7 @@ component{
     this.sessionManagement = "yes";
     // this.applicationTimeout = createTimeSpan( 1, 0, 0, 0 ); //30 days
   
-    this.sessionTimeout = createTimeSpan( 0, 0,0,10);
+    this.sessionTimeout = createTimeSpan( 0, 0,30,0);
 
     function onSessionStart() {
         writeDump("on Session start");
